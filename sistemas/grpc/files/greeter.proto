@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package greeter;
+
+// Servicio de saludo
+service Greeter {
+    // Llamada unaria: una petición, una respuesta
+    rpc SayHello (HelloRequest) returns (HelloReply);
+    rpc SayGoodBye (HelloRequest) returns (HelloReply);
+
+    // Streaming del servidor: una petición, varias respuestas
+    rpc SayHelloRepeatedly (HelloRequest) returns (stream HelloReply);
+    rpc sayGoodbyeRepeatedly (HelloRequest) returns (stream HelloReply);
+}
+
+message HelloRequest {
+    string name = 1;
+    int32 age = 2;  
+}
+
+message HelloReply {
+    string message = 1;
+}
