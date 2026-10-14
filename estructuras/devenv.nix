@@ -1,4 +1,10 @@
-{ pkgs, lib, config, inputs, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  inputs,
+  ...
+}:
 
 {
   # https://devenv.sh/basics/
@@ -7,6 +13,10 @@
   # https://devenv.sh/packages/
   packages = [ pkgs.git ];
 
+  languages.c = {
+    enable = true;
+    debugger = pkgs.gdb;
+  };
   # https://devenv.sh/languages/
   # languages.rust.enable = true;
 
