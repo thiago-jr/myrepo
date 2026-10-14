@@ -11,7 +11,15 @@
   env.GREET = "devenv";
 
   # https://devenv.sh/packages/
-  packages = [ pkgs.git ];
+  packages = with pkgs; [
+    git
+    gnumake
+    pkg-config
+    clang-tools
+    cmake
+    bear
+    valgrind
+  ];
 
   languages.c = {
     enable = true;
