@@ -1,0 +1,124 @@
+INFO:     Started server process [98612]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+2026-10-25 20:57:08,136 httpx HTTP Request: GET http://127.0.0.1:9000/sensores "HTTP/1.1 503 Service Unavailable"
+2026-10-25 20:57:08,137 sensores /sensores -> HTTP 503 (intento 1/5), espero 0.22 s
+2026-10-25 20:57:08,364 httpx HTTP Request: GET http://127.0.0.1:9000/sensores "HTTP/1.1 200 OK"
+2026-10-25 20:57:08,368 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzo1 "HTTP/1.1 503 Service Unavailable"
+2026-10-25 20:57:08,368 sensores /sensores -> HTTP 503 (intento 1/5), espero 0.09 s
+2026-10-25 20:57:10,460 sensores /sensores -> timeout (intento 2/5), espero 0.59 s
+2026-10-25 20:57:11,051 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzo1 "HTTP/1.1 503 Service Unavailable"
+2026-10-25 20:57:11,053 sensores /sensores -> HTTP 503 (intento 3/5), espero 1.52 s
+2026-10-25 20:57:12,580 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzo1 "HTTP/1.1 503 Service Unavailable"
+2026-10-25 20:57:12,581 sensores /sensores -> HTTP 503 (intento 4/5), espero 0.52 s
+2026-10-25 20:57:13,103 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzo1 "HTTP/1.1 200 OK"
+2026-10-25 20:57:13,108 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoxMA%3D%3D "HTTP/1.1 200 OK"
+2026-10-25 20:57:13,111 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoxNQ%3D%3D "HTTP/1.1 429 Too Many Requests"
+2026-10-25 20:57:13,112 sensores /sensores -> HTTP 429 (intento 1/5), espero 2.36 s
+2026-10-25 20:57:15,481 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoxNQ%3D%3D "HTTP/1.1 429 Too Many Requests"
+2026-10-25 20:57:15,482 sensores /sensores -> HTTP 429 (intento 2/5), espero 2.09 s
+2026-10-25 20:57:17,582 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoxNQ%3D%3D "HTTP/1.1 200 OK"
+2026-10-25 20:57:17,588 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoyMA%3D%3D "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:38462 - "GET /v1/sensores HTTP/1.1" 200 OK
+2026-10-25 20:57:49,832 httpx HTTP Request: GET http://127.0.0.1:9000/sensores "HTTP/1.1 503 Service Unavailable"
+2026-10-25 20:57:49,833 sensores /sensores -> HTTP 503 (intento 1/5), espero 0.15 s
+2026-10-25 20:57:49,984 httpx HTTP Request: GET http://127.0.0.1:9000/sensores "HTTP/1.1 200 OK"
+2026-10-25 20:57:49,990 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzo1 "HTTP/1.1 503 Service Unavailable"
+2026-10-25 20:57:49,991 sensores /sensores -> HTTP 503 (intento 1/5), espero 0.29 s
+2026-10-25 20:57:50,292 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzo1 "HTTP/1.1 200 OK"
+2026-10-25 20:57:50,298 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoxMA%3D%3D "HTTP/1.1 200 OK"
+2026-10-25 20:57:50,303 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoxNQ%3D%3D "HTTP/1.1 200 OK"
+2026-10-25 20:57:50,310 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoyMA%3D%3D "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:45354 - "GET /v1/sensores HTTP/1.1" 200 OK
+2026-10-25 20:59:19,150 httpx HTTP Request: GET http://127.0.0.1:9000/sensores "HTTP/1.1 200 OK"
+2026-10-25 20:59:19,153 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzo1 "HTTP/1.1 200 OK"
+2026-10-25 20:59:19,158 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoxMA%3D%3D "HTTP/1.1 200 OK"
+2026-10-25 20:59:19,164 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoxNQ%3D%3D "HTTP/1.1 200 OK"
+2026-10-25 20:59:21,168 sensores /sensores -> timeout (intento 1/5), espero 0.03 s
+2026-10-25 20:59:21,206 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoyMA%3D%3D "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:47034 - "GET /v1/sensores HTTP/1.1" 200 OK
+2026-10-25 20:59:48,742 sensores /sensores -> timeout (intento 1/5), espero 0.00 s
+2026-10-25 20:59:48,749 httpx HTTP Request: GET http://127.0.0.1:9000/sensores "HTTP/1.1 200 OK"
+2026-10-25 20:59:48,754 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzo1 "HTTP/1.1 200 OK"
+2026-10-25 20:59:48,761 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoxMA%3D%3D "HTTP/1.1 200 OK"
+2026-10-25 20:59:48,767 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoxNQ%3D%3D "HTTP/1.1 200 OK"
+2026-10-25 20:59:50,770 sensores /sensores -> timeout (intento 1/5), espero 0.21 s
+2026-10-25 20:59:50,988 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoyMA%3D%3D "HTTP/1.1 503 Service Unavailable"
+2026-10-25 20:59:50,989 sensores /sensores -> HTTP 503 (intento 2/5), espero 0.67 s
+2026-10-25 20:59:51,664 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoyMA%3D%3D "HTTP/1.1 429 Too Many Requests"
+2026-10-25 20:59:51,665 sensores /sensores -> HTTP 429 (intento 3/5), espero 2.39 s
+2026-10-25 20:59:54,059 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoyMA%3D%3D "HTTP/1.1 503 Service Unavailable"
+2026-10-25 20:59:54,060 sensores /sensores -> HTTP 503 (intento 4/5), espero 0.19 s
+INFO:     127.0.0.1:50326 - "GET /v1/sensores HTTP/1.1" 504 Gateway Timeout
+2026-10-25 21:00:00,651 httpx HTTP Request: GET http://127.0.0.1:9000/sensores "HTTP/1.1 200 OK"
+2026-10-25 21:00:00,654 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzo1 "HTTP/1.1 200 OK"
+2026-10-25 21:00:00,659 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoxMA%3D%3D "HTTP/1.1 200 OK"
+2026-10-25 21:00:02,663 sensores /sensores -> timeout (intento 1/5), espero 0.26 s
+2026-10-25 21:00:02,928 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoxNQ%3D%3D "HTTP/1.1 503 Service Unavailable"
+2026-10-25 21:00:02,930 sensores /sensores -> HTTP 503 (intento 2/5), espero 0.80 s
+2026-10-25 21:00:05,733 sensores /sensores -> timeout (intento 3/5), espero 0.23 s
+2026-10-25 21:00:07,965 sensores /sensores -> timeout (intento 4/5), espero 3.20 s
+2026-10-25 21:00:11,170 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoxNQ%3D%3D "HTTP/1.1 200 OK"
+2026-10-25 21:00:11,176 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoyMA%3D%3D "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:44574 - "GET /v1/sensores HTTP/1.1" 200 OK
+2026-10-25 21:00:14,832 httpx HTTP Request: GET http://127.0.0.1:9000/sensores "HTTP/1.1 200 OK"
+2026-10-25 21:00:14,836 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzo1 "HTTP/1.1 429 Too Many Requests"
+2026-10-25 21:00:14,836 sensores /sensores -> HTTP 429 (intento 1/5), espero 2.25 s
+2026-10-25 21:00:17,093 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzo1 "HTTP/1.1 200 OK"
+2026-10-25 21:00:17,098 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoxMA%3D%3D "HTTP/1.1 503 Service Unavailable"
+2026-10-25 21:00:17,099 sensores /sensores -> HTTP 503 (intento 1/5), espero 0.33 s
+2026-10-25 21:00:17,439 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoxMA%3D%3D "HTTP/1.1 200 OK"
+2026-10-25 21:00:17,444 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoxNQ%3D%3D "HTTP/1.1 503 Service Unavailable"
+2026-10-25 21:00:17,446 sensores /sensores -> HTTP 503 (intento 1/5), espero 0.44 s
+2026-10-25 21:00:17,891 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoxNQ%3D%3D "HTTP/1.1 200 OK"
+2026-10-25 21:00:19,897 sensores /sensores -> timeout (intento 1/5), espero 0.27 s
+2026-10-25 21:00:20,174 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoyMA%3D%3D "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:49990 - "GET /v1/sensores HTTP/1.1" 200 OK
+2026-10-25 21:00:54,893 httpx HTTP Request: GET http://127.0.0.1:9000/sensores "HTTP/1.1 200 OK"
+2026-10-25 21:00:54,898 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzo1 "HTTP/1.1 200 OK"
+2026-10-25 21:00:56,903 sensores /sensores -> timeout (intento 1/5), espero 0.36 s
+2026-10-25 21:00:59,268 sensores /sensores -> timeout (intento 2/5), espero 0.34 s
+2026-10-25 21:00:59,619 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoxMA%3D%3D "HTTP/1.1 429 Too Many Requests"
+2026-10-25 21:00:59,620 sensores /sensores -> HTTP 429 (intento 3/5), espero 2.23 s
+2026-10-25 21:01:01,859 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoxMA%3D%3D "HTTP/1.1 200 OK"
+2026-10-25 21:01:01,862 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoxNQ%3D%3D "HTTP/1.1 503 Service Unavailable"
+2026-10-25 21:01:01,863 sensores /sensores -> HTTP 503 (intento 1/5), espero 0.01 s
+2026-10-25 21:01:01,875 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoxNQ%3D%3D "HTTP/1.1 200 OK"
+2026-10-25 21:01:01,880 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoyMA%3D%3D "HTTP/1.1 503 Service Unavailable"
+2026-10-25 21:01:01,881 sensores /sensores -> HTTP 503 (intento 1/5), espero 0.04 s
+2026-10-25 21:01:01,929 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoyMA%3D%3D "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:39868 - "GET /v1/sensores HTTP/1.1" 200 OK
+2026-10-25 21:01:03,645 httpx HTTP Request: GET http://127.0.0.1:9000/sensores "HTTP/1.1 200 OK"
+2026-10-25 21:01:03,649 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzo1 "HTTP/1.1 503 Service Unavailable"
+2026-10-25 21:01:03,651 sensores /sensores -> HTTP 503 (intento 1/5), espero 0.08 s
+2026-10-25 21:01:03,740 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzo1 "HTTP/1.1 200 OK"
+2026-10-25 21:01:03,747 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoxMA%3D%3D "HTTP/1.1 200 OK"
+2026-10-25 21:01:03,750 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoxNQ%3D%3D "HTTP/1.1 503 Service Unavailable"
+2026-10-25 21:01:03,750 sensores /sensores -> HTTP 503 (intento 1/5), espero 0.27 s
+2026-10-25 21:01:04,028 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoxNQ%3D%3D "HTTP/1.1 200 OK"
+2026-10-25 21:01:06,033 sensores /sensores -> timeout (intento 1/5), espero 0.03 s
+2026-10-25 21:01:08,074 sensores /sensores -> timeout (intento 2/5), espero 0.84 s
+2026-10-25 21:01:08,923 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoyMA%3D%3D "HTTP/1.1 503 Service Unavailable"
+2026-10-25 21:01:08,924 sensores /sensores -> HTTP 503 (intento 3/5), espero 0.68 s
+2026-10-25 21:01:09,609 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoyMA%3D%3D "HTTP/1.1 429 Too Many Requests"
+2026-10-25 21:01:09,611 sensores /sensores -> HTTP 429 (intento 4/5), espero 2.34 s
+2026-10-25 21:01:11,952 httpx HTTP Request: GET http://127.0.0.1:9000/sensores?cursor=bzoyMA%3D%3D "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:60500 - "GET /v1/sensores HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33966 - "POST /v1/alertas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33980 - "POST /v1/alertas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33990 - "GET /v1/alertas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34002 - "POST /v1/alertas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34010 - "POST /v1/alertas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44266 - "POST /v1/alertas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44280 - "POST /v1/alertas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44292 - "GET /v1/alertas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44306 - "POST /v1/alertas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44308 - "POST /v1/alertas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35218 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35218 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46490 - "POST /v1/alertas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46498 - "POST /v1/alertas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46514 - "GET /v1/alertas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46530 - "POST /v1/alertas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46538 - "POST /v1/alertas HTTP/1.1" 404 Not Found

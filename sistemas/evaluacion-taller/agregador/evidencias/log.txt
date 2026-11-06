@@ -1,0 +1,143 @@
+## PARTE B:
+
+curl -i http://127.0.0.1:8000/salud
+
+HTTP/1.1 200 OK
+date: Mon, 26 Oct 2026 00:36:22 GMT
+server: uvicorn
+content-length: 15
+content-type: application/json
+
+{"estado":"ok"}%                                                                           
+
+
+curl -i http://127.0.0.1:8000/v1/ciudades/Bucaramanga/clima   # 200
+
+HTTP/1.1 200 OK
+date: Mon, 26 Oct 2026 00:40:04 GMT
+server: uvicorn
+content-length: 152
+content-type: application/json
+
+{"ciudad":"Bucaramanga","pais":"Colombia","latitud":7.125,"longitud":-73.11895,"temperatura_c":21.6,"viento_kmh":2.1,"hora_medicion":"2026-10-26T00:30"}%
+
+
+curl -i http://127.0.0.1:8000/v1/ciudades/xyxyxyx/clima       # 404
+
+HTTP/1.1 404 Not Found
+date: Mon, 26 Oct 2026 00:40:50 GMT
+server: uvicorn
+content-length: 48
+content-type: application/json
+
+{"detail":"No se encontró la ciudad 'xyxyxyx'"}%
+
+
+curl -i http://127.0.0.1:8000/v1/ciudades/a/clima             # 422
+
+HTTP/1.1 422 Unprocessable Content
+date: Mon, 26 Oct 2026 00:41:20 GMT
+server: uvicorn
+content-length: 148
+content-type: application/json
+
+{"detail":[{"type":"string_too_short","loc":["path","nombre"],"msg":"String should have at least 2 characters","input":"a","ctx":{"min_length":2}}]}%
+
+
+curl -i http://127.0.0.1:8000/v1/ciudades/Bucaramanga/clima   # 502
+
+HTTP/1.1 502 Bad Gateway
+date: Mon, 26 Oct 2026 00:25:29 GMT
+server: uvicorn
+content-length: 62
+content-type: application/json
+
+{"detail":"La API externa falló o respondió algo inválido"}%
+
+
+curl -i http://127.0.0.1:8000/v1/ciudades/Bucaramanga/clima   # 504
+
+HTTP/1.1 504 Gateway Timeout
+date: Mon, 26 Oct 2026 00:30:21 GMT
+server: uvicorn
+content-length: 57
+content-type: application/json
+
+{"detail":"La API externa tardó demasiado en responder"}%
+
+---
+
+{
+    "detail": "El servicio de sensores no responde; intente m\u00e1s tarde"
+}
+HTTP/1.1 200 OK
+date: Mon, 26 Oct 2026 01:00:06 GMT
+server: uvicorn
+content-length: 113
+content-type: application/json
+
+{"sensor_id":"S-001","tipo":"temperatura","valor":18.6,"unidad":"°C","marca_tiempo":"2026-10-26T01:00:09+00:00"}HTTP/1.1 404 Not Found
+date: Mon, 26 Oct 2026 01:00:09 GMT
+server: uvicorn
+content-length: 32
+content-type: application/json
+
+{"detail":"El sensor no existe"}%                                                          
+
+## PARTE C:
+
+CACHE_TTL=0   uvicorn app.main:app --port 8000 # sin caché
+
+medición 1:
+200 MISS 2411 ms
+200 MISS 2442 ms
+200 MISS 2399 ms
+200 MISS 3427 ms
+200 MISS 2535 ms
+200 MISS 2689 ms
+200 MISS 2280 ms
+200 MISS 2151 ms
+200 MISS 2305 ms
+200 MISS 2263 ms
+media 2490 ms | mín 2151 | máx 3427
+
+medición 2:
+200 MISS 1571 ms
+200 MISS 1283 ms
+200 MISS 1340 ms
+200 MISS 1231 ms
+200 MISS 1251 ms
+200 MISS 1352 ms
+200 MISS 1269 ms
+200 MISS 1449 ms
+200 MISS 1252 ms
+200 MISS 1280 ms
+media 1328 ms | mín 1231 | máx 1571
+
+CACHE_TTL=300 uvicorn app.main:app --port 8000 # con caché
+
+medición 1:
+200 MISS 5389 ms
+200 HIT 3 ms
+200 HIT 2 ms
+200 HIT 2 ms
+200 HIT 2 ms
+200 HIT 1 ms
+200 HIT 1 ms
+200 HIT 2 ms
+200 HIT 2 ms
+200 HIT 2 ms
+media 541 ms | mín 1 | máx 5389
+
+medición 2:
+200 MISS 1284 ms
+200 HIT 3 ms
+200 HIT 2 ms
+200 HIT 2 ms
+200 HIT 2 ms
+200 HIT 2 ms
+200 HIT 3 ms
+200 HIT 3 ms
+200 HIT 3 ms
+200 HIT 2 ms
+media 131 ms | mín 2 | máx 1284

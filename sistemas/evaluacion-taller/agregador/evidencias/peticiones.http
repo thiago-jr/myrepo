@@ -1,0 +1,155 @@
+# =============================================================================
+# Colección de peticiones de prueba - Agregador resiliente de APIs
+# Sistemas Distribuidos - UIS
+#
+# Uso: abrir en VS Code con la extensión "REST Client" (humao.rest-client) y
+# pulsar "Send Request" sobre cada petición. Cada bloque está separado por ###.
+#
+# Antes de empezar:
+#   Terminal 1: python servicio_inestable.py
+#   Terminal 2: URL_INESTABLE=http://127.0.0.1:9000 uvicorn app.main:app --port 8000
+# Si el docente usa otra instancia del servicio inestable, solo cambia
+# URL_INESTABLE al arrancar el agregador; este archivo no necesita cambios.
+# =============================================================================
+
+@agregador = http://127.0.0.1:8000
+@inestable = http://127.0.0.1:9000
+@clave = demo-0001-abcdef
+
+
+### -------------------------------------------------------------------------
+### 1. Sistema
+### -------------------------------------------------------------------------
+
+### 1.1 Salud del agregador -> 200
+GET {{agregador}}/salud
+
+
+### 1.2 Salud del servicio inestable (nunca falla) -> 200
+GET {{inestable}}/salud
+
+
+### 1.3 Parámetros con los que se arrancó el servicio inestable -> 200
+GET {{inestable}}/config
+
+
+### -------------------------------------------------------------------------
+### 2. API externa (Open-Meteo) con caché
+### -------------------------------------------------------------------------
+
+### 2.1 Clima de una ciudad -> 200
+# La primera petición responde X-Cache: MISS; si se repite dentro del TTL
+# (300 s por defecto) responde X-Cache: HIT en pocos milisegundos.
+GET {{agregador}}/v1/ciudades/Bucaramanga/clima
+
+
+### 2.2 Ciudad inexistente -> 404
+GET {{agregador}}/v1/ciudades/xyxyxyx/clima
+
+
+### 2.3 Nombre demasiado corto (mínimo 2 caracteres) -> 422
+GET {{agregador}}/v1/ciudades/a/clima
+
+
+### -------------------------------------------------------------------------
+### 3. Servicio inestable con reintentos y paginación
+### -------------------------------------------------------------------------
+
+### 3.1 Lista completa de sensores (recorre las 5 páginas) -> 200 con 23 sensores
+# Con los parámetros por defecto puede tardar varios segundos porque reintenta
+# los 503, los 429 (respetando Retry-After) y los timeouts. Los reintentos se
+# ven en la terminal del agregador.
+GET {{agregador}}/v1/sensores
+
+
+### 3.2 Lectura de un sensor existente -> 200
+GET {{agregador}}/v1/sensores/S-001/lectura
+
+
+### 3.3 Sensor inexistente -> 404 (no se reintenta)
+GET {{agregador}}/v1/sensores/S-999/lectura
+
+
+# Cómo provocar 502 y 504 (no se pueden disparar solo con este archivo):
+#
+# 502 -> detener el servicio inestable (Ctrl+C) y repetir la petición 3.1.
+#        El agregador agota los 5 intentos por error de red y responde 502.
+#
+# 504 -> reiniciar el servicio inestable haciendo que todo sea lento:
+#          python servicio_inestable.py --tasa-fallos 0 --tasa-429 0 --tasa-lentitud 1
+#        y repetir la petición 3.2. Cada intento supera el timeout de 2 s y,
+#        tras 5 intentos, el agregador responde 504.
+#
+# Para provocar 502/504 en el clima (Open-Meteo): cambiar temporalmente
+# URL_CLIMA en app/cliente.py por una dirección inválida (502) o poner
+# TIMEOUT = httpx.Timeout(0.001) (504), y repetir la petición 2.1 con otra
+# ciudad para evitar la caché.
+
+
+### -------------------------------------------------------------------------
+### 4. Idempotencia en POST /v1/alertas
+### -------------------------------------------------------------------------
+# Para repetir la demostración desde cero, reiniciar el agregador (las claves
+# se guardan en memoria) o cambiar el valor de @clave en la parte superior.
+
+### 4.1 Primera petición: crea la alerta -> 201
+POST {{agregador}}/v1/alertas
+Content-Type: application/json
+Idempotency-Key: {{clave}}
+
+{
+  "sensor_id": "S-001",
+  "mensaje": "CO2 alto en Biblioteca",
+  "severidad": "alta"
+}
+
+
+### 4.2 Misma clave y mismo cuerpo: devuelve la MISMA alerta -> 201
+# Debe traer el mismo id y la cabecera Idempotent-Replayed: true.
+POST {{agregador}}/v1/alertas
+Content-Type: application/json
+Idempotency-Key: {{clave}}
+
+{
+  "sensor_id": "S-001",
+  "mensaje": "CO2 alto en Biblioteca",
+  "severidad": "alta"
+}
+
+
+### 4.3 Lista de alertas: debe haber UNA sola -> 200
+GET {{agregador}}/v1/alertas
+
+
+### 4.4 Misma clave con un cuerpo distinto -> 409
+POST {{agregador}}/v1/alertas
+Content-Type: application/json
+Idempotency-Key: {{clave}}
+
+{
+  "sensor_id": "S-002",
+  "mensaje": "Otro mensaje",
+  "severidad": "baja"
+}
+
+
+### 4.5 Sin la cabecera Idempotency-Key -> 422
+POST {{agregador}}/v1/alertas
+Content-Type: application/json
+
+{
+  "sensor_id": "S-001",
+  "mensaje": "x"
+}
+
+
+### 4.6 Cuerpo inválido (severidad fuera de las permitidas) -> 422
+POST {{agregador}}/v1/alertas
+Content-Type: application/json
+Idempotency-Key: clave-nueva-0002
+
+{
+  "sensor_id": "S-001",
+  "mensaje": "Severidad incorrecta",
+  "severidad": "critica"
+}

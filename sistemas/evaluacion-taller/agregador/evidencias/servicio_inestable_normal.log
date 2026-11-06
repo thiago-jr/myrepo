@@ -1,0 +1,89 @@
+Servicio inestable en http://127.0.0.1:9000  (documentación en /docs)
+Parámetros: {'tasa_fallos': 0.3, 'tasa_429': 0.1, 'tasa_lentitud': 0.2, 'latencia_s': 4.0, 'retry_after_s': 2, 'semilla': None, 'tam_pagina': 5, 'num_sensores': 23}
+[20:57:08.134]       127.0.0.1 GET /sensores -> 503
+[20:57:08.362]       127.0.0.1 GET /sensores -> 200
+[20:57:08.367]       127.0.0.1 GET /sensores -> 503
+[20:57:08.458]       127.0.0.1 GET /sensores -> lenta (4.0 s)
+[20:57:11.050]       127.0.0.1 GET /sensores -> 503
+[20:57:12.461]       127.0.0.1 GET /sensores -> 200
+[20:57:12.579]       127.0.0.1 GET /sensores -> 503
+[20:57:13.101]       127.0.0.1 GET /sensores -> 200
+[20:57:13.107]       127.0.0.1 GET /sensores -> 200
+[20:57:13.110]       127.0.0.1 GET /sensores -> 429 (Retry-After: 2)
+[20:57:15.480]       127.0.0.1 GET /sensores -> 429 (Retry-After: 2)
+[20:57:17.581]       127.0.0.1 GET /sensores -> 200
+[20:57:17.587]       127.0.0.1 GET /sensores -> 200
+[20:57:49.832]       127.0.0.1 GET /sensores -> 503
+[20:57:49.983]       127.0.0.1 GET /sensores -> 200
+[20:57:49.989]       127.0.0.1 GET /sensores -> 503
+[20:57:50.291]       127.0.0.1 GET /sensores -> 200
+[20:57:50.297]       127.0.0.1 GET /sensores -> 200
+[20:57:50.302]       127.0.0.1 GET /sensores -> 200
+[20:57:50.309]       127.0.0.1 GET /sensores -> 200
+[20:59:19.149]       127.0.0.1 GET /sensores -> 200
+[20:59:19.153]       127.0.0.1 GET /sensores -> 200
+[20:59:19.157]       127.0.0.1 GET /sensores -> 200
+[20:59:19.163]       127.0.0.1 GET /sensores -> 200
+[20:59:19.167]       127.0.0.1 GET /sensores -> lenta (4.0 s)
+[20:59:21.205]       127.0.0.1 GET /sensores -> 200
+[20:59:23.168]       127.0.0.1 GET /sensores -> 200
+[20:59:46.739]       127.0.0.1 GET /sensores -> lenta (4.0 s)
+[20:59:48.749]       127.0.0.1 GET /sensores -> 200
+[20:59:48.753]       127.0.0.1 GET /sensores -> 200
+[20:59:48.760]       127.0.0.1 GET /sensores -> 200
+[20:59:48.766]       127.0.0.1 GET /sensores -> 200
+[20:59:48.769]       127.0.0.1 GET /sensores -> lenta (4.0 s)
+[20:59:50.742]       127.0.0.1 GET /sensores -> 200
+[20:59:50.987]       127.0.0.1 GET /sensores -> 503
+[20:59:51.663]       127.0.0.1 GET /sensores -> 429 (Retry-After: 2)
+[20:59:52.771]       127.0.0.1 GET /sensores -> 200
+[20:59:54.057]       127.0.0.1 GET /sensores -> 503
+[20:59:54.252]       127.0.0.1 GET /sensores -> lenta (4.0 s)
+[20:59:58.254]       127.0.0.1 GET /sensores -> 200
+[21:00:00.650]       127.0.0.1 GET /sensores -> 200
+[21:00:00.654]       127.0.0.1 GET /sensores -> 200
+[21:00:00.658]       127.0.0.1 GET /sensores -> 200
+[21:00:00.661]       127.0.0.1 GET /sensores -> lenta (4.0 s)
+[21:00:02.927]       127.0.0.1 GET /sensores -> 503
+[21:00:03.731]       127.0.0.1 GET /sensores -> lenta (4.0 s)
+[21:00:04.664]       127.0.0.1 GET /sensores -> 200
+[21:00:05.964]       127.0.0.1 GET /sensores -> lenta (4.0 s)
+[21:00:07.733]       127.0.0.1 GET /sensores -> 200
+[21:00:09.967]       127.0.0.1 GET /sensores -> 200
+[21:00:11.169]       127.0.0.1 GET /sensores -> 200
+[21:00:11.175]       127.0.0.1 GET /sensores -> 200
+[21:00:14.831]       127.0.0.1 GET /sensores -> 200
+[21:00:14.835]       127.0.0.1 GET /sensores -> 429 (Retry-After: 2)
+[21:00:17.093]       127.0.0.1 GET /sensores -> 200
+[21:00:17.096]       127.0.0.1 GET /sensores -> 503
+[21:00:17.438]       127.0.0.1 GET /sensores -> 200
+[21:00:17.443]       127.0.0.1 GET /sensores -> 503
+[21:00:17.890]       127.0.0.1 GET /sensores -> 200
+[21:00:17.895]       127.0.0.1 GET /sensores -> lenta (4.0 s)
+[21:00:20.173]       127.0.0.1 GET /sensores -> 200
+[21:00:21.897]       127.0.0.1 GET /sensores -> 200
+[21:00:54.892]       127.0.0.1 GET /sensores -> 200
+[21:00:54.898]       127.0.0.1 GET /sensores -> 200
+[21:00:54.902]       127.0.0.1 GET /sensores -> lenta (4.0 s)
+[21:00:57.267]       127.0.0.1 GET /sensores -> lenta (4.0 s)
+[21:00:58.904]       127.0.0.1 GET /sensores -> 200
+[21:00:59.618]       127.0.0.1 GET /sensores -> 429 (Retry-After: 2)
+[21:01:01.270]       127.0.0.1 GET /sensores -> 200
+[21:01:01.858]       127.0.0.1 GET /sensores -> 200
+[21:01:01.861]       127.0.0.1 GET /sensores -> 503
+[21:01:01.874]       127.0.0.1 GET /sensores -> 200
+[21:01:01.879]       127.0.0.1 GET /sensores -> 503
+[21:01:01.928]       127.0.0.1 GET /sensores -> 200
+[21:01:03.644]       127.0.0.1 GET /sensores -> 200
+[21:01:03.648]       127.0.0.1 GET /sensores -> 503
+[21:01:03.739]       127.0.0.1 GET /sensores -> 200
+[21:01:03.745]       127.0.0.1 GET /sensores -> 200
+[21:01:03.749]       127.0.0.1 GET /sensores -> 503
+[21:01:04.027]       127.0.0.1 GET /sensores -> 200
+[21:01:04.032]       127.0.0.1 GET /sensores -> lenta (4.0 s)
+[21:01:06.073]       127.0.0.1 GET /sensores -> lenta (4.0 s)
+[21:01:08.035]       127.0.0.1 GET /sensores -> 200
+[21:01:08.922]       127.0.0.1 GET /sensores -> 503
+[21:01:09.608]       127.0.0.1 GET /sensores -> 429 (Retry-After: 2)
+[21:01:10.076]       127.0.0.1 GET /sensores -> 200
+[21:01:11.951]       127.0.0.1 GET /sensores -> 200
